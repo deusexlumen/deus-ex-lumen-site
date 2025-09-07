@@ -1,90 +1,209 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Deus Ex Lumen — Homepage</title>
-  <meta name="description" content="Deus Ex Lumen — Sakral · Mystisch · Edle Video-Galerie" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Deus Ex Lumen – Erkenntnis · Transformation · Mysterium</title>
+  <meta name="description" content="DEUS EX LUMEN – Analysen, Symbolik & Perspektiven. Wo Dunkelheit sich ins Licht verwandelt.">
   <meta name="theme-color" content="#7f1d1d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Deus Ex Lumen">
+  <meta property="og:description" content="Wo Dunkelheit sich ins Licht verwandelt.">
+  <meta property="og:image" content="channels4_profile.jpg">
+  <meta property="og:site_name" content="Deus Ex Lumen">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Deus Ex Lumen">
+  <meta name="twitter:description" content="Erkenntnis · Transformation · Mysterium">
+  <meta name="twitter:image" content="channels4_profile.jpg">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <style>
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#e6e6e6;
-      background:linear-gradient(180deg,#050506,#0b0b0f)}
+    :root { --dxl-primary:#ef4444; --dxl-primary-700:#b91c1c; --dxl-gold:#f59e0b; --dxl-bg-1:#050506; --dxl-bg-2:#0b0b0f; --dxl-glow:0 0 18px rgba(239,68,68,.6),0 0 48px rgba(239,68,68,.25) }
+    body { font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:
+      radial-gradient(1200px 800px at 70% -10%, rgba(239,68,68,.18), transparent 60%),
+      radial-gradient(900px 600px at -10% 30%, rgba(245,158,11,.12), transparent 65%),
+      linear-gradient(180deg,var(--dxl-bg-1) 0%, var(--dxl-bg-2) 100%); color:#e5e7eb; min-height:100vh }
     .font-cinzel{font-family:'Cinzel',serif}
-    .neon{text-shadow:0 0 18px rgba(239,68,68,.65),0 0 48px rgba(239,68,68,.25)}
-    .glass{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.06)}
-    .grid-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+    .noise::before{content:'';position:fixed;inset:-100vmax;pointer-events:none;z-index:0;
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="3" stitchTiles="stitch"/></filter><rect filter="url(%23n)" width="100%" height="100%" opacity="0.03"/></svg>');
+      mix-blend-mode:soft-light;animation:drift 60s linear infinite}
+    @keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(50px,30px,0)}}
+    .neon{text-shadow:var(--dxl-glow)}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.09)}
+    .cursor-glow{position:fixed;width:30vmax;height:30vmax;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle at center,rgba(239,68,68,.18),rgba(239,68,68,.06) 40%,transparent 60%);filter:blur(26px);mix-blend-mode:screen;transform:translate(-50%,-50%)}
+    .fx-underline{height:2px;border-radius:999px;background:linear-gradient(90deg,transparent,rgba(239,68,68,.7),transparent);box-shadow:0 0 18px rgba(239,68,68,.35)}
+    .video-card:hover .cover{transform:scale(1.04)} .video-card .cover{transition:transform .5s ease}
+    @media (prefers-reduced-motion:reduce){.noise::before{animation:none}}
   </style>
+  <script>tailwind.config={theme:{extend:{colors:{dxl:{primary:'#ef4444',gold:'#f59e0b'}}}}}</script>
 </head>
-<body>
-  <header style="text-align:center;padding:3rem 1rem">
-    <h1 class="font-cinzel neon" style="font-size:3rem">DEUS EX LUMEN</h1>
-    <p>Sakral · Mystisch · Edle Video-Galerie</p>
+<body class="noise selection:bg-red-600/40 relative">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-black/60 focus:text-white focus:px-3 focus:py-2 focus:rounded-lg">Zum Inhalt springen</a>
+  <div id="cursorGlow" class="cursor-glow" aria-hidden="true"></div>
+  <div id="particles-js" class="pointer-events-none fixed inset-0 -z-10"></div>
+  <nav class="sticky top-0 z-40 glass">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-4">
+        <a href="#" class="flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-amber-500 shadow-lg ring-1 ring-white/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 4.5L19 7l-3.6 3.4L16.4 15 12 12.8 7.6 15l1-4.6L5 7l4.8-.5L12 2z"/></svg>
+          </span>
+          <span class="font-cinzel text-xl tracking-wide">DEUS EX LUMEN</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="#uploads" class="hover:text-white/90">Neueste</a>
+          <a href="#playlists" class="hover:text-white/90">Playlists</a>
+          <a href="#about" class="hover:text-white/90">Über</a>
+          <a href="#kontakt" class="hover:text-white/90">Kontakt</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="fxToggle" class="px-3 py-2 text-sm rounded-lg border border-white/10 hover:bg-white/5" aria-pressed="true">FX: AN</button>
+          <a href="#uploads" class="px-3 py-2 rounded-lg bg-red-700 hover:bg-red-600 shadow-lg transition">Neueste Videos</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <header id="main" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 pointer-events-none">
+      <div class="absolute -top-24 -left-20 h-96 w-96 rounded-full blur-3xl opacity-60 bg-red-700/30"></div>
+      <div class="absolute bottom-0 right-0 h-[32rem] w-[32rem] rounded-full blur-3xl opacity-40 bg-amber-500/20"></div>
+    </div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="min-h-[80vh] flex flex-col items-center justify-center text-center gap-6 py-24">
+        <div class="relative">
+          <img src="channels4_profile.jpg" alt="Deus Ex Lumen – Profil" class="w-40 h-40 md:w-48 md:h-48 rounded-full ring-4 ring-red-700/70 shadow-2xl object-cover transition-transform duration-500 will-change-transform hover:scale-[1.03]" onerror="this.style.display='none';document.getElementById('avatarFallback').classList.remove('hidden')">
+          <div id="avatarFallback" class="hidden w-40 h-40 md:w-48 md:h-48 rounded-full ring-4 ring-red-700/70 shadow-2xl bg-gradient-to-br from-red-700 to-amber-500"></div>
+        </div>
+        <h1 class="font-cinzel neon text-5xl md:text-7xl font-extrabold tracking-wide">DEUS EX LUMEN</h1>
+        <p id="typewriter" class="text-lg md:text-xl text-gray-300 italic">„Wo Dunkelheit sich ins Licht verwandelt.“</p>
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
+          <a href="#uploads" class="group relative px-6 py-3 rounded-xl bg-red-700 hover:bg-red-600 transition shadow-lg ring-1 ring-white/10">
+            <span class="relative z-10 flex items-center gap-2"><i data-lucide="play-circle" class="w-5 h-5"></i> Neueste Videos</span>
+            <span class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition shadow-[0_0_2rem_rgba(239,68,68,.45)]"></span>
+          </a>
+          <a href="#about" class="px-6 py-3 rounded-xl border border-red-700/60 hover:bg-red-900/40 transition">Über mich</a>
+        </div>
+        <div class="mt-10 mx-auto max-w-2xl"><div class="fx-underline"></div></div>
+      </div>
+    </div>
   </header>
-
-  <main class="container" style="max-width:1200px;margin:0 auto;padding:2rem">
-    <section id="playlists">
-      <h2 class="font-cinzel neon" style="font-size:2rem;margin-bottom:1rem">Playlist-Galerie</h2>
-      <div style="margin-bottom:1rem">
-        <input id="plInput" placeholder="Playlist-ID" style="padding:.5rem;border-radius:8px;border:1px solid #333;color:#000">
-        <button id="loadBtn" style="padding:.5rem 1rem;border-radius:8px;background:#b91c1c;color:#fff">Laden</button>
+  <section id="uploads" class="relative py-24 bg-gradient-to-b from-transparent via-red-950/20 to-transparent">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon">Neueste Uploads</h2>
+        <p class="text-gray-400 mt-2">Automatisch per Proxy geladen – keine API-Schlüssel im Frontend.</p>
       </div>
-      <div id="grid" class="grid-videos"></div>
-      <div id="fallbackEmbeds" style="display:none;margin-top:1rem">
-        <p>Fallback: statische Embeds</p>
-        <div id="embedList" class="grid-videos"></div>
+      <div id="latestGrid" class="grid lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+  <section id="playlists" class="py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon">Playlists</h2>
+        <p class="text-gray-400 mt-2">Kuratiert & live aus YouTube geladen.</p>
       </div>
-    </section>
-  </main>
-
-  <footer style="text-align:center;padding:2rem;color:#999">
-    © <span id="year"></span> Deus Ex Lumen
-  </footer>
-
+      <div id="playlistContainer" class="grid lg:grid-cols-2 gap-8"></div>
+    </div>
+  </section>
+  <section id="about" class="py-24 bg-red-950/20">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon">Über Deus Ex Lumen</h2>
+      </div>
+      <div class="glass rounded-2xl p-8 md:p-10 leading-relaxed text-gray-200">
+        <p class="mb-4">Erkenntnis. Transformation. Mysterium. In meinen Videos entschlüssele ich Symbole, hinterfrage Narrative und eröffne neue Blickwinkel.</p>
+        <p>Begib dich mit mir auf eine Reise jenseits der Matrix – tiefgründig und kompromisslos.</p>
+      </div>
+    </div>
+  </section>
+  <section id="kontakt" class="py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 glass rounded-2xl p-8">
+          <h3 class="font-cinzel text-2xl text-red-400 neon mb-4">Lass uns sprechen</h3>
+          <p class="text-gray-300 mb-6">Fragen, Kooperationen, Ideen? Schreibe mir eine Nachricht.</p>
+          <form class="grid sm:grid-cols-2 gap-4" onsubmit="event.preventDefault(); alert('Danke! Nachricht gesendet. (Demo)')">
+            <input type="text" placeholder="Name" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-600/60" required>
+            <input type="email" placeholder="E-Mail" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-600/60" required>
+            <textarea placeholder="Nachricht" rows="4" class="sm:col-span-2 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-600/60" required></textarea>
+            <button type="submit" class="sm:col-span-2 px-6 py-3 rounded-xl bg-red-700 hover:bg-red-600 shadow-lg ring-1 ring-white/10 transition flex items-center gap-2 justify-center"><i data-lucide="send"></i> Senden</button>
+          </form>
+        </div>
+        <div class="glass rounded-2xl p-8">
+          <h4 class="font-semibold mb-4">Social</h4>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center gap-2"><i data-lucide="youtube"></i> <a id="ytLink" href="#" class="hover:text-white/90" target="_blank" rel="noopener">YouTube</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="instagram"></i> <a id="igLink" href="#" class="hover:text-white/90" target="_blank" rel="noopener">Instagram</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="twitter"></i> <a id="twLink" href="#" class="hover:text-white/90" target="_blank" rel="noopener">X / Twitter</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="mail"></i> <a id="mailLink" href="mailto:kontakt@example.com" class="hover:text-white/90">kontakt@example.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="playerModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm p-4 md:p-10">
+    <div class="max-w-5xl mx-auto glass rounded-2xl p-2 md:p-4 relative">
+      <button id="closeModal" class="absolute top-3 right-3 p-2 rounded-lg hover:bg-white/10" aria-label="Schließen"><i data-lucide="x"></i></button>
+      <div class="aspect-video rounded-xl overflow-hidden"><iframe id="ytPlayer" class="w-full h-full" src="" title="YouTube Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share" allowfullscreen></iframe></div>
+      <div class="p-4"><h3 id="modalTitle" class="font-semibold"></h3></div>
+    </div>
+  </div>
+  <button id="topBtn" class="hidden fixed bottom-6 right-6 bg-red-700 p-3 rounded-full shadow-lg hover:bg-red-600 transition" aria-label="Zurück nach oben"><i data-lucide="chevron-up"></i></button>
+  <footer class="py-10 text-center bg-black/40 border-t border-white/10"><p class="text-gray-400">© <span id="year"></span> Deus Ex Lumen – „In jedem Schatten ein Licht.“</p></footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Deus Ex Lumen","url":"https://example.com/","description":"Cineastische Analysen, Symbolik & Perspektiven.","inLanguage":"de","publisher":{"@type":"Organization","name":"Deus Ex Lumen"}}</script>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const SERVER_PROXY = 'https://deus-ex-lumen-proxy.onrender.com/api/youtube?playlist=';
-    const FALLBACK_VIDEO_IDS = ['dQw4w9WgXcQ','M7lc1UVf-VE','sBws8MSXN7A'];
-    const grid = document.getElementById('grid');
-    const fallbackEmbeds = document.getElementById('fallbackEmbeds');
-    const embedList = document.getElementById('embedList');
-
-    function createCard(item){
-      const s=item.snippet;
-      const vid=s.resourceId.videoId;
-      const thumb=s.thumbnails.high.url;
-      const a=document.createElement('a');
-      a.href=`https://www.youtube.com/watch?v=${vid}`;a.target='_blank';
-      a.innerHTML=`<div class="glass" style="overflow:hidden;border-radius:12px">
-        <img src="${thumb}" alt="${s.title}" style="width:100%;display:block">
-        <div style="padding:.5rem">${s.title}</div></div>`;
-      return a;
-    }
-
-    async function loadPlaylist(id){
-      if(!id)return;
-      grid.innerHTML='Lade...';
-      try{
-        const res=await fetch(SERVER_PROXY+encodeURIComponent(id));
-        if(!res.ok)throw new Error('HTTP '+res.status);
-        const data=await res.json();
-        if(!data.items.length)throw new Error('Keine Videos');
-        grid.innerHTML='';
-        data.items.forEach(it=>grid.appendChild(createCard(it)));
-      }catch(e){
-        console.warn('Proxy/API fehlgeschlagen',e);
-        grid.innerHTML='';
-        fallbackEmbeds.style.display='block';
-        embedList.innerHTML='';
-        FALLBACK_VIDEO_IDS.forEach(id=>{
-          const div=document.createElement('div');
-          div.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}" style="width:100%;aspect-ratio:16/9" frameborder="0" allowfullscreen></iframe>`;
-          embedList.appendChild(div);
-        });
-      }
-    }
-    document.getElementById('loadBtn').addEventListener('click',()=>loadPlaylist(document.getElementById('plInput').value.trim()));
+    const CONFIG={
+      proxyBase:"https://deus-ex-lumen-proxy.onrender.com/api/youtube",
+      uploadsPlaylistId:"UCWqb5hmD-fNaTic5tOHOh2Q",
+      playlists:[{id:"PLxxxx1",title:"Themenreihe I",description:"Füge hier eine Beschreibung hinzu."},{id:"PLxxxx2",title:"Themenreihe II",description:"Füge hier eine Beschreibung hinzu."}],
+      social:{youtube:"#",instagram:"#",twitter:"#",mail:"mailto:kontakt@example.com"}
+    };
+    lucide.createIcons();
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const topBtn=document.getElementById('topBtn'); window.addEventListener('scroll',()=>{topBtn.classList.toggle('hidden',window.scrollY<=400)}); topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    const glow=document.getElementById('cursorGlow'); window.addEventListener('pointermove',(e)=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
+    let fxEnabled=true; const fxToggle=document.getElementById('fxToggle'); function initParticles(){particlesJS('particles-js',{particles:{number:{value:90,density:{enable:true,value_area:900}},color:{value:'#ef4444'},shape:{type:'circle'},opacity:{value:0.3},size:{value:2,random:true},line_linked:{enable:true,distance:140,color:'#7f1d1d',opacity:0.4,width:1},move:{enable:true,speed:1}},interactivity:{events:{onhover:{enable:true,mode:'repulse'},onclick:{enable:true,mode:'push'},resize:true},modes:{repulse:{distance:100,duration:0.4}}},retina_detect:true})} initParticles();
+    fxToggle.addEventListener('click',()=>{fxEnabled=!fxEnabled;fxToggle.textContent=`FX: ${fxEnabled?'AN':'AUS'}`;const c=document.getElementById('particles-js'); if(fxEnabled){c.style.display='';initParticles()}else{c.style.display='none';c.querySelectorAll('canvas').forEach(x=>x.remove())}});
+    const typeEl=document.getElementById('typewriter'); const phrases=['„Wo Dunkelheit sich ins Licht verwandelt.“','Symbolik entschlüsseln. Perspektiven erweitern.','Cineastisch · Tiefgründig · Kompromisslos']; let pi=0,ci=0,deleting=false; function typeLoop(){const full=phrases[pi]; if(!deleting){ci++;typeEl.textContent=full.slice(0,ci); if(ci===full.length){deleting=true;setTimeout(typeLoop,1800);return}}else{ci--;typeEl.textContent=full.slice(0,ci); if(ci===0){deleting=false;pi=(pi+1)%phrases.length}} setTimeout(typeLoop,deleting?30:50)} setTimeout(typeLoop,1200);
+    const reveal=(el)=>{el.style.opacity=0;el.style.transform='translateY(16px)';const io=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){el.style.transition='opacity .7s ease, transform .7s ease';el.style.opacity=1;el.style.transform='translateY(0)';io.unobserve(el)}})},{threshold:0.15}); io.observe(el)}; document.querySelectorAll('section,.glass').forEach(reveal);
+    document.getElementById('ytLink').href=CONFIG.social.youtube; document.getElementById('igLink').href=CONFIG.social.instagram; document.getElementById('twLink').href=CONFIG.social.twitter; document.getElementById('mailLink').href=CONFIG.social.mail;
+    const PROXY=CONFIG.proxyBase;
+    async function fetchPlaylistItems(playlistId,max=8){const url=`${PROXY}?playlist=${encodeURIComponent(playlistId)}&max=${max}`; const res=await fetch(url,{headers:{'Accept':'application/json'}}); if(!res.ok) throw new Error('Proxy-Fehler: '+res.status); const data=await res.json(); return data.items||[]}
+    async function renderLatest(){const container=document.getElementById('latestGrid'); container.innerHTML=''; if(!CONFIG.uploadsPlaylistId||CONFIG.uploadsPlaylistId==='UULFILLME'){container.innerHTML=`<div class="col-span-full glass rounded-2xl p-6 text-gray-300"><p><strong>Hinweis:</strong> Trage in CONFIG.uploadsPlaylistId deine <em>Uploads-Playlist-ID</em> ein (beginnt mit <code>UU</code> …), um die neuesten Uploads anzuzeigen.</p></div>`; return} try{const items=await fetchPlaylistItems(CONFIG.uploadsPlaylistId,6); if(!items.length){container.innerHTML=`<div class="col-span-full glass rounded-2xl p-6">Keine Uploads gefunden.</div>`; return} items.forEach(v=>{const sn=v.snippet; const vid=sn.resourceId?.videoId; const thumb=sn.thumbnails?.high?.url||sn.thumbnails?.medium?.url||sn.thumbnails?.default?.url; const card=document.createElement('article'); card.className="video-card glass rounded-2xl overflow-hidden shadow-xl"; card.innerHTML=`
+      <button class="w-full text-left" data-video="${vid}" data-title="${sn.title.replace(/"/g,'&quot;')}">
+        <div class="relative overflow-hidden">
+          <img class="cover w-full aspect-video object-cover" src="${thumb}" alt="${sn.title}">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-2 left-2 px-2 py-1 text-xs rounded bg-black/60">Neu</div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-semibold line-clamp-2">${sn.title}</h3>
+          <p class="text-sm text-gray-400 line-clamp-2 mt-1">${sn.description||''}</p>
+        </div>
+      </button>`; container.appendChild(card)})}catch(e){container.innerHTML=`<div class="col-span-full glass rounded-2xl p-6">Fehler beim Laden: ${e.message}</div>`}}
+    async function renderPlaylists(){const root=document.getElementById('playlistContainer'); root.innerHTML=''; for(const pl of CONFIG.playlists){const wrap=document.createElement('section'); wrap.className="glass rounded-2xl p-4 md:p-6"; wrap.innerHTML=`
+        <div class="mb-4"><h3 class="font-semibold text-lg">${pl.title}</h3><p class="text-sm text-gray-400">${pl.description||''}</p></div>
+        <div class="grid sm:grid-cols-2 gap-4" id="pl-${pl.id}"></div>`; root.appendChild(wrap); const grid=wrap.querySelector(`#pl-${CSS.escape(pl.id)}`); try{const items=await fetchPlaylistItems(pl.id,8); items.forEach(v=>{const sn=v.snippet; const vid=sn.resourceId?.videoId; const thumb=sn.thumbnails?.high?.url||sn.thumbnails?.medium?.url||sn.thumbnails?.default?.url; const card=document.createElement('article'); card.className="video-card rounded-xl overflow-hidden bg-white/5 border border-white/10"; card.innerHTML=`
+          <button class="w-full text-left" data-video="${vid}" data-title="${sn.title.replace(/"/g,'&quot;')}">
+            <div class="relative overflow-hidden">
+              <img class="cover w-full aspect-video object-cover" src="${thumb}" alt="${sn.title}">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute top-2 left-2 inline-flex items-center gap-1 text-xs px-2 py-1 bg-red-700/80 rounded"><i data-lucide="play" class="w-3 h-3"></i><span>Abspielen</span></div>
+            </div>
+            <div class="p-3"><h4 class="font-medium line-clamp-2">${sn.title}</h4></div>
+          </button>`; grid.appendChild(card)}); lucide.createIcons()}catch(e){grid.innerHTML=`<div class="sm:col-span-2 text-gray-300">Fehler: ${e.message}</div>`}}}
+    const modal=document.getElementById('playerModal'); const closeModal=document.getElementById('closeModal'); const ytPlayer=document.getElementById('ytPlayer'); const modalTitle=document.getElementById('modalTitle');
+    document.addEventListener('click',(e)=>{const btn=e.target.closest('button[data-video]'); if(!btn)return; const vid=btn.getAttribute('data-video'); const title=btn.getAttribute('data-title')||'Video'; ytPlayer.src=`https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&modestbranding=1`; modalTitle.textContent=title; modal.classList.remove('hidden'); document.body.style.overflow='hidden'});
+    closeModal.addEventListener('click',()=>{ytPlayer.src=""; modal.classList.add('hidden'); document.body.style.overflow=''});
+    modal.addEventListener('click',(e)=>{if(e.target===modal) closeModal.click()});
+    (async function init(){try{await renderLatest(); await renderPlaylists()}catch(e){console.error(e)} if('serviceWorker' in navigator){try{await navigator.serviceWorker.register('./sw.js')}catch{}}})();
   </script>
 </body>
 </html>

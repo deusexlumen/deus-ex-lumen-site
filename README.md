@@ -2,4 +2,4 @@
 
 Dies ist das Frontend, das bei GitHub Pages gehostet wird.
 
-da.gd/deus-home
+[da.gd/deus-home](https://da.gd/deus-home)

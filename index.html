@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Deus Ex Lumen — Homepage</title>
+  <meta name="description" content="Deus Ex Lumen — Sakral · Mystisch · Edle Video-Galerie" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="theme-color" content="#7f1d1d">
+  <style>
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#e6e6e6;
+      background:linear-gradient(180deg,#050506,#0b0b0f)}
+    .font-cinzel{font-family:'Cinzel',serif}
+    .neon{text-shadow:0 0 18px rgba(239,68,68,.65),0 0 48px rgba(239,68,68,.25)}
+    .glass{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.06)}
+    .grid-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+  </style>
+</head>
+<body>
+  <header style="text-align:center;padding:3rem 1rem">
+    <h1 class="font-cinzel neon" style="font-size:3rem">DEUS EX LUMEN</h1>
+    <p>Sakral · Mystisch · Edle Video-Galerie</p>
+  </header>
+
+  <main class="container" style="max-width:1200px;margin:0 auto;padding:2rem">
+    <section id="playlists">
+      <h2 class="font-cinzel neon" style="font-size:2rem;margin-bottom:1rem">Playlist-Galerie</h2>
+      <div style="margin-bottom:1rem">
+        <input id="plInput" placeholder="Playlist-ID" style="padding:.5rem;border-radius:8px;border:1px solid #333;color:#000">
+        <button id="loadBtn" style="padding:.5rem 1rem;border-radius:8px;background:#b91c1c;color:#fff">Laden</button>
+      </div>
+      <div id="grid" class="grid-videos"></div>
+      <div id="fallbackEmbeds" style="display:none;margin-top:1rem">
+        <p>Fallback: statische Embeds</p>
+        <div id="embedList" class="grid-videos"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="text-align:center;padding:2rem;color:#999">
+    © <span id="year"></span> Deus Ex Lumen
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const SERVER_PROXY = 'https://deus-ex-lumen-proxy.onrender.com/api/youtube?playlist=';
+    const FALLBACK_VIDEO_IDS = ['dQw4w9WgXcQ','M7lc1UVf-VE','sBws8MSXN7A'];
+    const grid = document.getElementById('grid');
+    const fallbackEmbeds = document.getElementById('fallbackEmbeds');
+    const embedList = document.getElementById('embedList');
+
+    function createCard(item){
+      const s=item.snippet;
+      const vid=s.resourceId.videoId;
+      const thumb=s.thumbnails.high.url;
+      const a=document.createElement('a');
+      a.href=`https://www.youtube.com/watch?v=${vid}`;a.target='_blank';
+      a.innerHTML=`<div class="glass" style="overflow:hidden;border-radius:12px">
+        <img src="${thumb}" alt="${s.title}" style="width:100%;display:block">
+        <div style="padding:.5rem">${s.title}</div></div>`;
+      return a;
+    }
+
+    async function loadPlaylist(id){
+      if(!id)return;
+      grid.innerHTML='Lade...';
+      try{
+        const res=await fetch(SERVER_PROXY+encodeURIComponent(id));
+        if(!res.ok)throw new Error('HTTP '+res.status);
+        const data=await res.json();
+        if(!data.items.length)throw new Error('Keine Videos');
+        grid.innerHTML='';
+        data.items.forEach(it=>grid.appendChild(createCard(it)));
+      }catch(e){
+        console.warn('Proxy/API fehlgeschlagen',e);
+        grid.innerHTML='';
+        fallbackEmbeds.style.display='block';
+        embedList.innerHTML='';
+        FALLBACK_VIDEO_IDS.forEach(id=>{
+          const div=document.createElement('div');
+          div.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}" style="width:100%;aspect-ratio:16/9" frameborder="0" allowfullscreen></iframe>`;
+          embedList.appendChild(div);
+        });
+      }
+    }
+    document.getElementById('loadBtn').addEventListener('click',()=>loadPlaylist(document.getElementById('plInput').value.trim()));
+  </script>
+</body>
+</html>

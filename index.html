@@ -9,15 +9,15 @@
   <meta property="og:title" content="Deus Ex Lumen" />
   <meta property="og:description" content="Wo Dunkelheit sich ins Licht verwandelt." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="channels4_profile.jpg" />
+  <meta property="og:image" content="https://simgbb.com/avatar/JFZjtDkhxPL0.jpg" />
   <meta property="og:locale" content="de_DE" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Deus Ex Lumen" />
   <meta name="twitter:description" content="Erkenntnis. Transformation. Mysterium." />
-  <meta name="twitter:image" content="channels4_profile.jpg" />
+  <meta name="twitter:image" content="https://simgbb.com/avatar/JFZjtDkhxPL0.jpg" />
   <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="g" cx="50%" cy="35%" r="60%"><stop offset="0" stop-color="%23ef4444"/><stop offset="1" stop-color="%230b0b0f"/></radialGradient></defs><rect width="64" height="64" rx="12" fill="url(%23g)"/><path fill="white" fill-opacity=".9" d="M32 8l5.2 10.6 11.8 1.7-8.5 8.3 2 11.7L32 36.6l-10.5 5.7 2-11.7-8.5-8.3 11.8-1.7z"/></svg>' />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -45,6 +45,16 @@
     .cursor-glow{position:fixed;width:36vmax;height:36vmax;border-radius:50%;pointer-events:none;background:radial-gradient(circle at center, rgba(239,68,68,.16), rgba(239,68,68,.06) 40%, transparent 60%);filter:blur(26px);mix-blend-mode:screen;transform:translate(-50%,-50%);z-index:0}
     .fx-underline{background:linear-gradient(90deg, rgba(239,68,68,.0), rgba(239,68,68,.6), rgba(239,68,68,.0));height:2px;border-radius:999px;box-shadow:0 0 18px rgba(239,68,68,.35)}
     .card:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(239,68,68,.18)} .card{transition:transform .3s ease, box-shadow .3s ease}
+    .glass ul li::before {
+      content: "✦";
+      color: #f59e0b;
+      margin-right: 0.75rem;
+      font-size: 1.2em;
+      line-height: 1;
+      display: inline-block;
+      width: 1.2em;
+      text-align: center;
+    }
     @media(prefers-reduced-motion:reduce){.noise::before{animation:none}}
   </style>
 </head>
@@ -92,7 +102,7 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="min-h-[80vh] flex flex-col items-center justify-center text-center gap-6 py-24">
         <div class="relative">
-          <img src="channels4_profile.jpg" alt="Deus Ex Lumen – Profil" class="w-40 h-40 md:w-48 md:h-48 rounded-full ring-4 ring-red-700/70 shadow-2xl object-cover transition-transform duration-500 will-change-transform hover:scale-[1.03]" onerror="this.style.display='none';document.getElementById('avatarFallback').classList.remove('hidden')">
+          <img src="https://simgbb.com/avatar/JFZjtDkhxPL0.jpg" alt="Deus Ex Lumen – Profil" class="w-40 h-40 md:w-48 md:h-48 rounded-full ring-4 ring-red-700/70 shadow-2xl object-cover transition-transform duration-500 will-change-transform hover:scale-[1.03]" onerror="this.style.display='none';document.getElementById('avatarFallback').classList.remove('hidden')">
           <div id="avatarFallback" class="hidden w-40 h-40 md:w-48 md:h-48 rounded-full ring-4 ring-red-700/70 shadow-2xl bg-gradient-to-br from-red-700 to-amber-500"></div>
         </div>
         <h1 class="font-cinzel neon text-5xl md:text-7xl font-extrabold tracking-wide">DEUS EX LUMEN</h1>
@@ -133,13 +143,75 @@
   </section>
   <section id="about" class="py-24 bg-red-950/20">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
+      <div class="text-center mb-12">
         <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon">Über Deus Ex Lumen</h2>
+        <p class="text-gray-400 mt-3 text-lg italic">„Erkenntnis. Transformation. Mysterium.“</p>
       </div>
-      <div class="glass rounded-2xl p-8 md:p-10 leading-relaxed text-gray-200">
-        <p class="mb-4">Erkenntnis. Transformation. Mysterium. In meinen Videos entschlüssele ich Symbole, hinterfrage Narrative und eröffne neue Blickwinkel.</p>
-        <p class="mb-4">Sakral, aber mystisch: Rot als Signatur, Gold als Aura – cineastische Inszenierung, kompromisslos erzählt.</p>
-        <p>Begib dich mit mir auf eine Reise jenseits der Matrix – stilvoll, tiefgründig und visuell präzise.</p>
+
+      <div class="glass rounded-2xl p-8 md:p-10 leading-relaxed text-gray-200 space-y-8">
+        
+        <div class="prose prose-invert max-w-none">
+          <p class="text-lg md:text-xl">
+            <strong>Deus ex Lumen</strong> ist kein gewöhnliches Projekt. Es ist eine Einladung — ein Ruf —, das Denken neu zu entdecken.
+          </p>
+          
+          <p class="text-lg md:text-xl">
+            Hier gilt: <em>Es gibt keine guten oder schlechten Informationen.</em> Jede Information ist ein Werkzeug. Was wir daraus machen, bestimmt unsere Entwicklung — nicht ihre Herkunft.
+          </p>
+        </div>
+
+        <div class="border-t border-white/10 pt-8">
+          <h3 class="font-semibold text-red-400 text-xl mb-6 flex items-center gap-2">
+            <i data-lucide="book-open" class="w-5 h-5"></i> Leitprinzipien
+          </h3>
+          <ul class="space-y-4 text-lg">
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-red-500 font-bold">•</span>
+              Der Mensch ist weder gut noch schlecht — er ist <strong>formbar durch Information</strong>.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-red-500 font-bold">•</span>
+              Kritisches Denken ist keine Gabe — es ist eine <strong>Fähigkeit</strong>, die man lernen und üben muss.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-red-500 font-bold">•</span>
+              Freiheit ist das Naturrecht jedes Menschen — sie macht uns zu <strong>Anarchisten und Königen zugleich</strong>.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-red-500 font-bold">•</span>
+              Das <strong>Trivium</strong> — Grammatik, Logik und Rhetorik — ist der Schlüssel, um Weisheit bewusst zu kultivieren.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-red-500 font-bold">•</span>
+              Paradoxien sind Wegweiser. Wer sie erkennt, wächst in seiner Weisheit — nicht in seiner Gewissheit.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-red-500 font-bold">•</span>
+              Prinzipien geben Orientierung — solange sie <strong>beweglich bleiben</strong>. Erstarrte Prinzipien verwandeln sich in Dogmen.
+            </li>
+          </ul>
+        </div>
+
+        <div class="border-t border-white/10 pt-8">
+          <p class="text-lg md:text-xl">
+            <strong>Deus ex Lumen</strong> möchte nicht belehren — sondern zum Fragen ermutigen. 
+            Es geht darum, Information als <em>Rohstoff für authentisches Denken</em> zu begreifen — 
+            und die eigene Freiheit nicht als abstraktes Ideal, sondern als <em>gelebte Haltung</em> zu erkennen.
+          </p>
+          
+          <p class="text-lg md:text-xl mt-4">
+            Dies ist ein Ort für <strong>Suchende</strong>, nicht für fertige Antworten. 
+            Ein Ort, an dem <strong>Fragen wichtiger sind als Schlagzeilen</strong>. 
+            Ein Prozess, der dazu einlädt, <strong>authentisch, frei und kritisch</strong> zu leben — 
+            und das eigene Licht in die Welt zu tragen.
+          </p>
+        </div>
+
+        <div class="mt-8 text-center">
+          <p class="text-sm text-gray-500 italic border-l-4 border-red-500 pl-4">
+            „In jedem Schatten ein Licht.“
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -160,12 +232,12 @@
           </form>
         </div>
         <div class="glass rounded-2xl p-8">
-          <h4 class="font-semibold mb-4">Social</h4>
+          <h4 class="font-semibold mb-4">Social & More</h4>
           <ul class="space-y-3 text-gray-300">
-            <li class="flex items-center gap-2"><i data-lucide="youtube"></i> <a id="ytLink" href="#" class="hover:text-white/90" target="_blank" rel="noopener">YouTube</a></li>
-            <li class="flex items-center gap-2"><i data-lucide="instagram"></i> <a href="#" class="hover:text-white/90" target="_blank" rel="noopener">Instagram</a></li>
-            <li class="flex items-center gap-2"><i data-lucide="twitter"></i> <a href="#" class="hover:text-white/90" target="_blank" rel="noopener">X / Twitter</a></li>
-            <li class="flex items-center gap-2"><i data-lucide="mail"></i> <a id="mailLink" href="mailto:kontakt@example.com" class="hover:text-white/90">kontakt@example.com</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="youtube"></i> <a id="ytLink" href="https://www.youtube.com/@deusexlumen" class="hover:text-white/90" target="_blank" rel="noopener">YouTube</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="instagram"></i> <a href="https://www.instagram.com/deus.ex.lumen/" class="hover:text-white/90" target="_blank" rel="noopener">Instagram</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="link"></i> <a href="https://deusexlumen.bio.link" class="hover:text-white/90" target="_blank" rel="noopener">Bio Link</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="mail"></i> <a id="mailLink" href="mailto:deusexlumen@airmail.cc" class="hover:text-white/90">deusexlumen@airmail.cc</a></li>
           </ul>
         </div>
       </div>
@@ -201,7 +273,7 @@
     async function buildUploads(){const grid=$('#uploadsGrid'); const fallback=$('#fallbackPlayer'); try{const cid=await resolveChannelId(CONFIG.brand.channelQuery); if(!cid) throw new Error('Kein Channel gefunden'); const up=await getUploadsPlaylistId(cid); if(!up) throw new Error('Kein Uploads-Feed'); const items=await getPlaylistItems(up,CONFIG.uploadsMax); if(!items.length) throw new Error('Keine Items'); items.forEach(i=>grid.appendChild(videoCard(i)));}catch(e){console.warn('Uploads Fallback aktiviert:',e); fallback.hidden=false}}
     async function buildPlaylists(){const root=$('#playlistGrids'); for(const pl of CONFIG.playlists){try{const items=await getPlaylistItems(pl.id,CONFIG.playlistItemsMax); if(!items.length) continue; root.appendChild(playlistSection(pl,items));}catch(e){console.warn('Playlist Fehler',pl.id,e)}} if(!CONFIG.playlists.length){root.innerHTML='<div class="text-center text-gray-400 col-span-2">Playlists werden automatisch angezeigt, sobald IDs im CONFIG eingetragen sind. Aktuell siehst du die neuesten Uploads oben.</div>'}}
     (async()=>{const yt=$('#ytLink'); if(yt) yt.href=CONFIG.brand.youtubeUrl; await buildUploads(); await buildPlaylists(); lucide.createIcons();})();
-    function sendMail(e){e.preventDefault(); const name=$('#name').value.trim(); const email=$('#email').value.trim(); const message=$('#message').value.trim(); const subject=encodeURIComponent(`Kontakt: ${name}`); const body=encodeURIComponent(`${message}\n\n— ${name}\n${email}`); window.location.href=`mailto:kontakt@example.com?subject=${subject}&body=${body}`}
+    function sendMail(e){e.preventDefault(); const name=$('#name').value.trim(); const email=$('#email').value.trim(); const message=$('#message').value.trim(); const subject=encodeURIComponent(`Kontakt: ${name}`); const body=encodeURIComponent(`${message}\n\n— ${name}\n${email}`); window.location.href=`mailto:deusexlumen@airmail.cc?subject=${subject}&body=${body}`}
     function copyMail(){const mail=$('#mailLink').getAttribute('href').replace('mailto:',''); navigator.clipboard.writeText(mail).then(()=>{alert('E-Mail-Adresse kopiert: '+mail)})}
   </script>
   <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(console.warn);});}</script>

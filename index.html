@@ -51,7 +51,7 @@
       margin-right: 0.75rem;
       font-size: 1.2em;
       line-height: 1;
-      dis: inline-block;
+      display: inline-block;
       width: 1.2em;
       text-align: center;
     }
@@ -73,7 +73,7 @@
         </a>
         <div class="hidden md:flex items-center gap-6">
           <a href="#uploads" class="hover:text-white/90">Neueste</a>
-          <a href="#lists" class="hover:text-white/90">Playlists</a>
+          <a href="#playlists" class="hover:text-white/90">Playlists</a>
           <a href="#about" class="hover:text-white/90">Über</a>
           <a href="#kontakt" class="hover:text-white/90">Kontakt</a>
         </div>
@@ -254,11 +254,12 @@
       apiKey: "AIzaSyBEnFQNre_5MWDxMCvnzOmciYd2LkDJuFw",
       brand: { channelQuery: "Deus Ex Lumen", youtubeUrl: "https://www.youtube.com/@deusexlumen" },
       playlists: [
-    { id: "PLg0E3JcRs5WYjDCDhwAbPHMvJ4EAp9HzF", title: "MAAT", description: "Die MAAT (Das System)" },
-    { id: "PLg0E3JcRs5WbK4PlfETFaf0weiJRytupw", title: "Passio", description: "Die wichtigsten Vorträge von Mark Passio" },
-    { id: "PLg0E3JcRs5Wb1cfHJvfV7H5uFOWJm7RhY", title: "Demokratie", description: "Das Problem mit "unserer" Demokratie" }
-  ],
-  uploadsMax: 9, playlistItemsMax: 8
+        { id: "PLg0E3JcRs5WYjDCDhwAbPHMvJ4EAp9HzF", title: "MAAT", description: "Die MAAT (Das System)" },
+        { id: "PLg0E3JcRs5WbK4PlfETFaf0weiJRytupw", title: "Passio", description: "Die wichtigsten Vorträge von Mark Passio" },
+        { id: "PLg0E3JcRs5Wb1cfHJvfV7H5uFOWJm7RhY", title: "Demokratie", description: 'Das Problem mit "unserer" Demokratie' }
+      ],
+      uploadsMax: 9, 
+      playlistItemsMax: 8
     };
     const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
     lucide.createIcons(); $('#year').textContent = new Date().getFullYear();

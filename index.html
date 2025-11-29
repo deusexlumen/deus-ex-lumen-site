@@ -15,273 +15,1084 @@
   <meta name="twitter:title" content="Deus Ex Lumen" />
   <meta name="twitter:description" content="Erkenntnis. Transformation. Mysterium." />
   <meta name="twitter:image" content="https://simgbb.com/avatar/JFZjtDkhxPL0.jpg" />
-  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="g" cx="50%" cy="35%" r="60%"><stop offset="0" stop-color="%23ef4444"/><stop offset="1" stop-color="%230b0b0f"/></radialGradient></defs><rect width="64" height="64" rx="12" fill="url(%23g)"/><path fill="white" fill-opacity=".9" d="M32 8l5.2 10.6 11.8 1.7-8.5 8.3 2 11.7L32 36.6l-10.5 5.7 2-11.7-8.5-8.3 11.8-1.7z"/></svg>' />
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="g" cx="50%25" cy="35%25" r="60%25"><stop offset="0" stop-color="%23ef4444"/><stop offset="1" stop-color="%230b0b0f"/></radialGradient></defs><rect width="64" height="64" rx="12" fill="url(%23g)"/><path fill="white" fill-opacity=".9" d="M32 8l5.2 10.6 11.8 1.7-8.5 8.3 2 11.7L32 36.6l-10.5 5.7 2-11.7-8.5-8.3 11.8-1.7z"/></svg>' />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <link rel="manifest" href="./manifest.webmanifest">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <style>
     :root {
-      --dxl-primary:#ef4444; --dxl-primary-700:#b91c1c; --dxl-accent:#f59e0b; --dxl-ink:#e5e7eb;
-      --dxl-bg-1:#050506; --dxl-bg-2:#0b0b0f; --dxl-glow:0 0 18px rgba(239,68,68,.65),0 0 48px rgba(239,68,68,.25);
+      --dxl-primary: #ef4444;
+      --dxl-primary-dark: #b91c1c;
+      --dxl-accent: #f59e0b;
+      --dxl-ink: #e5e7eb;
+      --dxl-bg-1: #050506;
+      --dxl-bg-2: #0b0b0f;
+      --dxl-glow: 0 0 20px rgba(239,68,68,.6), 0 0 60px rgba(239,68,68,.2);
     }
-    html{scroll-behavior:smooth}
-    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--dxl-ink);
-      background:radial-gradient(1200px 800px at 70% -10%, rgba(239,68,68,.16), transparent 60%),
-                 radial-gradient(900px 600px at -10% 30%, rgba(245,158,11,.10), transparent 65%),
-                 linear-gradient(180deg, var(--dxl-bg-1) 0%, var(--dxl-bg-2) 100%);}
-    .font-cinzel{font-family:'Cinzel',serif}
-    .neon{text-shadow:var(--dxl-glow)}
-    .glass{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,.08)}
-    .noise::before{content:"";position:fixed;inset:-100vmax;pointer-events:none;z-index:0;
-      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="3" stitchTiles="stitch"/></filter><rect filter="url(%23n)" width="100%" height="100%" opacity="0.035"/></svg>');
-      mix-blend-mode:soft-light;animation:drift 60s linear infinite}
-    @keyframes drift{to{transform:translate3d(50px,30px,0)}}
-    .cursor-glow{position:fixed;width:36vmax;height:36vmax;border-radius:50%;pointer-events:none;background:radial-gradient(circle at center, rgba(239,68,68,.16), rgba(239,68,68,.06) 40%, transparent 60%);filter:blur(26px);mix-blend-mode:screen;transform:translate(-50%,-50%);z-index:0}
-    .fx-underline{background:linear-gradient(90deg, rgba(239,68,68,.0), rgba(239,68,68,.6), rgba(239,68,68,.0));height:2px;border-radius:999px;box-shadow:0 0 18px rgba(239,68,68,.35)}
-    .card:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(239,68,68,.18)} .card{transition:transform .3s ease, box-shadow .3s ease}
-    .glass ul li::before {
-      content: "✦";
-      color: #f59e0b;
-      margin-right: 0.75rem;
-      font-size: 1.2em;
-      line-height: 1;
-      display: inline-block;
-      width: 1.2em;
-      text-align: center;
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--dxl-ink);
+      background: var(--dxl-bg-1);
+      overflow-x: hidden;
     }
-    @media(prefers-reduced-motion:reduce){.noise::before{animation:none}}
+    
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .neon { text-shadow: var(--dxl-glow); }
+    
+    /* Animated gradient background */
+    .bg-animated {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: 
+        radial-gradient(ellipse 80% 50% at 20% -20%, rgba(239,68,68,.15), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(245,158,11,.1), transparent),
+        linear-gradient(180deg, var(--dxl-bg-1), var(--dxl-bg-2));
+    }
+    
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: float 20s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(239,68,68,.3), transparent 70%);
+      top: -200px;
+      left: -200px;
+      animation-delay: 0s;
+    }
+    
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245,158,11,.2), transparent 70%);
+      bottom: -150px;
+      right: -150px;
+      animation-delay: -10s;
+    }
+    
+    .orb-3 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(239,68,68,.15), transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -5s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -30px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(20px, 10px) scale(1.02); }
+    }
+    
+    /* Glass morphism */
+    .glass {
+      background: linear-gradient(135deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    
+    .glass-dark {
+      background: linear-gradient(135deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,.2) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.05);
+    }
+    
+    /* Noise texture */
+    .noise::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+    
+    /* Cursor glow */
+    .cursor-glow {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(239,68,68,.12), transparent 60%);
+      filter: blur(40px);
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      transition: opacity 0.3s;
+    }
+    
+    /* Cards */
+    .card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(239,68,68,.1), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(239,68,68,.15), 0 0 0 1px rgba(239,68,68,.2);
+    }
+    
+    .card:hover::before {
+      opacity: 1;
+    }
+    
+    /* Button glow effect */
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(90deg, var(--dxl-primary), var(--dxl-accent), var(--dxl-primary));
+      background-size: 200% 100%;
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0;
+      animation: shimmer 3s linear infinite;
+      transition: opacity 0.3s;
+    }
+    
+    .btn-glow:hover::before {
+      opacity: 1;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Stagger children */
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 0.5s; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 0.6s; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 0.7s; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 0.8s; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 0.9s; }
+    
+    .stagger.visible > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Underline effect */
+    .fx-underline {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(239,68,68,.6), transparent);
+      border-radius: 999px;
+      box-shadow: 0 0 20px rgba(239,68,68,.4);
+    }
+    
+    /* Avatar pulse */
+    .avatar-ring {
+      position: relative;
+    }
+    
+    .avatar-ring::before,
+    .avatar-ring::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid rgba(239,68,68,.4);
+      animation: pulse-ring 2s ease-out infinite;
+    }
+    
+    .avatar-ring::after {
+      animation-delay: 1s;
+    }
+    
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.3); opacity: 0; }
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--dxl-bg-1);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: rgba(239,68,68,.4);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(239,68,68,.6);
+    }
+    
+    /* Navigation */
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--dxl-primary);
+      transition: width 0.3s;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Loading skeleton */
+    .skeleton {
+      background: linear-gradient(90deg, rgba(255,255,255,.05) 25%, rgba(255,255,255,.1) 50%, rgba(255,255,255,.05) 75%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite;
+    }
+    
+    @keyframes skeleton-loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    /* Typewriter cursor */
+    .typewriter-cursor::after {
+      content: '|';
+      animation: blink 1s step-end infinite;
+      color: var(--dxl-primary);
+    }
+    
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    
+    /* List styling */
+    .principle-item {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .principle-item::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--dxl-accent);
+      font-size: 0.875rem;
+    }
+    
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body class="relative noise selection:bg-red-600/40">
-  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-black/60 focus:text-white focus:px-3 focus:py-2 focus:rounded-lg">Zum Inhalt springen</a>
-  <div id="particles-js" class="pointer-events-none fixed inset-0 -z-10"></div>
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-red-700 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">
+    Zum Inhalt springen
+  </a>
+  
+  <!-- Background -->
+  <div class="bg-animated"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  
+  <!-- Cursor glow -->
   <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-  <nav class="sticky top-0 z-40 glass">
+  
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 glass-dark">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between py-4">
+      <div class="flex items-center justify-between h-16 md:h-20">
         <a href="#" class="flex items-center gap-3 group">
-          <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-amber-500 shadow-lg ring-1 ring-white/10">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 4.5L19 7l-3.6 3.4L16.4 15 12 12.8 7.6 15l1-4.6L5 7l4.8-.5L12 2z"/></svg>
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-amber-500 shadow-lg ring-1 ring-white/10 transition-transform group-hover:scale-105">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l2.2 4.5L19 7l-3.6 3.4L16.4 15 12 12.8 7.6 15l1-4.6L5 7l4.8-.5L12 2z"/>
+            </svg>
           </span>
-          <span class="font-cinzel text-xl tracking-wide">DEUS EX LUMEN</span>
+          <span class="font-cinzel text-lg md:text-xl tracking-wide font-semibold">DEUS EX LUMEN</span>
         </a>
-        <div class="hidden md:flex items-center gap-6">
-          <a href="#uploads" class="hover:text-white/90">Neueste</a>
-          <a href="#playlists" class="hover:text-white/90">Playlists</a>
-          <a href="#about" class="hover:text-white/90">Über</a>
-          <a href="#kontakt" class="hover:text-white/90">Kontakt</a>
+        
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#uploads" class="nav-link text-gray-300 hover:text-white transition">Neueste</a>
+          <a href="#playlists" class="nav-link text-gray-300 hover:text-white transition">Playlists</a>
+          <a href="#about" class="nav-link text-gray-300 hover:text-white transition">Über</a>
+          <a href="#kontakt" class="nav-link text-gray-300 hover:text-white transition">Kontakt</a>
         </div>
-        <div class="flex items-center gap-2">
-          <button id="fxToggle" class="px-3 py-2 text-sm rounded-lg border border-white/10 hover:bg-white/5" aria-pressed="false" aria-label="Effekte ein-/ausschalten">FX: AN</button>
-          <a href="#uploads" class="px-3 py-2 rounded-lg bg-red-700 hover:bg-red-600 shadow-lg transition">Neueste Videos</a>
-          <button class="md:hidden p-2 rounded-lg hover:bg-white/5" id="openMenu" aria-label="Menü öffnen"><i data-lucide="menu"></i></button>
+        
+        <div class="flex items-center gap-3">
+          <button id="fxToggle" class="hidden sm:flex items-center gap-2 px-3 py-2 text-sm rounded-lg border border-white/10 hover:bg-white/5 transition" aria-pressed="true" aria-label="Effekte ein-/ausschalten">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>FX</span>
+          </button>
+          <a href="#uploads" class="btn-glow px-4 py-2 rounded-lg bg-red-700 hover:bg-red-600 shadow-lg transition text-sm font-medium">
+            Videos
+          </a>
+          <button class="md:hidden p-2 rounded-lg hover:bg-white/5 transition" id="openMenu" aria-label="Menü öffnen">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
         </div>
       </div>
     </div>
   </nav>
-  <div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-lg">
-    <div class="max-w-sm glass m-6 ml-auto p-6 rounded-2xl space-y-4">
-      <button id="closeMenu" class="p-2 rounded-lg hover:bg-white/5 float-right" aria-label="Menü schließen"><i data-lucide="x"></i></button>
-      <a href="#uploads" class="block text-lg py-2">Neueste</a>
-      <a href="#playlists" class="block text-lg py-2">Playlists</a>
-      <a href="#about" class="block text-lg py-2">Über</a>
-      <a href="#kontakt" class="block text-lg py-2">Kontakt</a>
+  
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-[60] pointer-events-none opacity-0 transition-opacity duration-300">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-xl"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-sm glass p-6 translate-x-full transition-transform duration-300" id="mobileMenuPanel">
+      <div class="flex justify-end mb-8">
+        <button id="closeMenu" class="p-2 rounded-lg hover:bg-white/5 transition" aria-label="Menü schließen">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <nav class="space-y-6">
+        <a href="#uploads" class="block text-2xl font-cinzel text-gray-200 hover:text-white transition">Neueste</a>
+        <a href="#playlists" class="block text-2xl font-cinzel text-gray-200 hover:text-white transition">Playlists</a>
+        <a href="#about" class="block text-2xl font-cinzel text-gray-200 hover:text-white transition">Über</a>
+        <a href="#kontakt" class="block text-2xl font-cinzel text-gray-200 hover:text-white transition">Kontakt</a>
+      </nav>
+      <div class="mt-12 pt-8 border-t border-white/10">
+        <div class="flex gap-4">
+          <a href="https://www.youtube.com/@deusexlumen" target="_blank" rel="noopener" class="p-3 rounded-lg bg-white/5 hover:bg-white/10 transition">
+            <i data-lucide="youtube" class="w-6 h-6"></i>
+          </a>
+          <a href="https://www.instagram.com/deus.ex.lumen/" target="_blank" rel="noopener" class="p-3 rounded-lg bg-white/5 hover:bg-white/10 transition">
+            <i data-lucide="instagram" class="w-6 h-6"></i>
+          </a>
+          <a href="mailto:deusexlumen@airmail.cc" class="p-3 rounded-lg bg-white/5 hover:bg-white/10 transition">
+            <i data-lucide="mail" class="w-6 h-6"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-  <header id="main" class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10 pointer-events-none">
-      <div class="absolute -top-24 -left-20 h-96 w-96 rounded-full blur-3xl opacity-60 bg-red-700/30"></div>
-      <div class="absolute bottom-0 right-0 h-[32rem] w-[32rem] rounded-full blur-3xl opacity-40 bg-amber-500/20"></div>
-    </div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="min-h-[80vh] flex flex-col items-center justify-center text-center gap-6 py-24">
-        <div class="relative">
-          <img src="https://simgbb.com/avatar/JFZjtDkhxPL0.jpg" alt="Deus Ex Lumen – Profil" class="w-40 h-40 md:w-48 md:h-48 rounded-full ring-4 ring-red-700/70 shadow-2xl object-cover transition-transform duration-500 will-change-transform hover:scale-[1.03]" onerror="this.style.display='none';document.getElementById('avatarFallback').classList.remove('hidden')">
-          <div id="avatarFallback" class="hidden w-40 h-40 md:w-48 md:h-48 rounded-full ring-4 ring-red-700/70 shadow-2xl bg-gradient-to-br from-red-700 to-amber-500"></div>
+  
+  <!-- Hero -->
+  <header id="main" class="relative min-h-[90vh] flex items-center">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 w-full">
+      <div class="flex flex-col items-center text-center gap-8">
+        <!-- Avatar -->
+        <div class="reveal avatar-ring">
+          <img 
+            src="https://simgbb.com/avatar/JFZjtDkhxPL0.jpg" 
+            alt="Deus Ex Lumen – Profil" 
+            class="w-36 h-36 md:w-44 md:h-44 rounded-full ring-4 ring-red-700/60 shadow-2xl object-cover"
+            onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')"
+          >
+          <div class="hidden w-36 h-36 md:w-44 md:h-44 rounded-full ring-4 ring-red-700/60 shadow-2xl bg-gradient-to-br from-red-700 to-amber-500 flex items-center justify-center">
+            <i data-lucide="star" class="w-16 h-16 text-white"></i>
+          </div>
         </div>
-        <h1 class="font-cinzel neon text-5xl md:text-7xl font-extrabold tracking-wide">DEUS EX LUMEN</h1>
-        <p id="typewriter" class="text-lg md:text-xl text-gray-300 italic">„Wo Dunkelheit sich ins Licht verwandelt.“</p>
-        <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
-          <a href="#uploads" class="group relative px-6 py-3 rounded-xl bg-red-700 hover:bg-red-600 transition shadow-lg ring-1 ring-white/10">
-            <span class="relative z-10 flex items-center gap-2"><i data-lucide="play-circle" class="w-5 h-5"></i> Neueste Videos</span>
-            <span class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition shadow-[0_0_2rem_rgba(239,68,68,.45)]"></span>
+        
+        <!-- Title -->
+        <div class="reveal space-y-4" style="transition-delay: 0.2s">
+          <h1 class="font-cinzel neon text-4xl sm:text-5xl md:text-7xl font-bold tracking-wide">
+            DEUS EX LUMEN
+          </h1>
+          <p id="typewriter" class="text-lg md:text-xl text-gray-400 italic h-7 typewriter-cursor"></p>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div class="reveal flex flex-wrap items-center justify-center gap-4 mt-4" style="transition-delay: 0.4s">
+          <a href="#uploads" class="btn-glow group relative px-8 py-4 rounded-xl bg-red-700 hover:bg-red-600 transition shadow-xl">
+            <span class="relative z-10 flex items-center gap-2 font-medium">
+              <i data-lucide="play-circle" class="w-5 h-5"></i>
+              Neueste Videos
+            </span>
           </a>
-          <a href="#about" class="px-6 py-3 rounded-xl border border-red-700/60 hover:bg-red-900/40 transition">Über mich</a>
+          <a href="#about" class="px-8 py-4 rounded-xl border border-red-700/50 hover:border-red-600 hover:bg-red-900/20 transition font-medium">
+            Über mich
+          </a>
         </div>
-        <div class="mt-10 mx-auto max-w-2xl"><div class="fx-underline"></div></div>
+        
+        <!-- Stats -->
+        <div class="reveal grid grid-cols-3 gap-8 mt-12 text-center" style="transition-delay: 0.6s">
+          <div>
+            <div class="text-2xl md:text-3xl font-bold text-red-400" id="statVideos">—</div>
+            <div class="text-sm text-gray-500">Videos</div>
+          </div>
+          <div>
+            <div class="text-2xl md:text-3xl font-bold text-amber-400" id="statPlaylists">3</div>
+            <div class="text-sm text-gray-500">Playlists</div>
+          </div>
+          <div>
+            <div class="text-2xl md:text-3xl font-bold text-red-400">∞</div>
+            <div class="text-sm text-gray-500">Erkenntnis</div>
+          </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="reveal absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" style="transition-delay: 0.8s">
+          <i data-lucide="chevron-down" class="w-6 h-6 text-gray-500"></i>
+        </div>
       </div>
     </div>
   </header>
-  <section id="uploads" class="relative py-24 bg-gradient-to-b from-transparent via-red-950/20 to-transparent">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon">Neueste Uploads</h2>
-        <p class="text-gray-400 mt-2">Automatisch geladen. Fallback auf Iframe, falls API gesperrt ist.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6" id="uploadsGrid" aria-live="polite"></div>
-      <div class="glass rounded-2xl p-4 md:p-6 shadow-xl mt-8" id="fallbackPlayer" hidden>
-        <div class="aspect-video rounded-xl overflow-hidden">
-          <iframe class="w-full h-full" src="https://www.youtube.com/embed?listType=user_uploads&list=deusexlumen" title="Neueste Uploads" frameborder="0" allowfullscreen loading="lazy"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="playlists" class="py-24">
+  
+  <!-- Divider -->
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="fx-underline"></div>
+  </div>
+  
+  <!-- Uploads Section -->
+  <section id="uploads" class="py-24 md:py-32">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon">Playlists</h2>
-        <p class="text-gray-400 mt-2">Kuratiert – automatisch geladen.</p>
+      <div class="reveal text-center mb-12">
+        <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon mb-3">Neueste Uploads</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">Die neuesten Videos – automatisch geladen von YouTube.</p>
       </div>
-      <div class="grid lg:grid-cols-2 gap-8" id="playlistGrids"></div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger" id="uploadsGrid">
+        <!-- Skeleton loaders -->
+        <div class="skeleton-card glass rounded-2xl overflow-hidden">
+          <div class="aspect-video skeleton"></div>
+          <div class="p-4 space-y-3">
+            <div class="h-5 skeleton rounded"></div>
+            <div class="h-4 w-1/2 skeleton rounded"></div>
+          </div>
+        </div>
+        <div class="skeleton-card glass rounded-2xl overflow-hidden">
+          <div class="aspect-video skeleton"></div>
+          <div class="p-4 space-y-3">
+            <div class="h-5 skeleton rounded"></div>
+            <div class="h-4 w-1/2 skeleton rounded"></div>
+          </div>
+        </div>
+        <div class="skeleton-card glass rounded-2xl overflow-hidden">
+          <div class="aspect-video skeleton"></div>
+          <div class="p-4 space-y-3">
+            <div class="h-5 skeleton rounded"></div>
+            <div class="h-4 w-1/2 skeleton rounded"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Fallback -->
+      <div class="glass rounded-2xl p-6 shadow-xl mt-8 hidden" id="fallbackPlayer">
+        <div class="aspect-video rounded-xl overflow-hidden">
+          <iframe 
+            class="w-full h-full" 
+            src="https://www.youtube.com/embed?listType=user_uploads&list=deusexlumen" 
+            title="Neueste Uploads" 
+            frameborder="0" 
+            allowfullscreen 
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
     </div>
   </section>
-  <section id="about" class="py-24 bg-red-950/20">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon">Über Deus Ex Lumen</h2>
-        <p class="text-gray-400 mt-3 text-lg italic">„Erkenntnis. Transformation. Mysterium.“</p>
+  
+  <!-- Playlists Section -->
+  <section id="playlists" class="py-24 md:py-32 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-red-950/10 to-transparent pointer-events-none"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+      <div class="reveal text-center mb-12">
+        <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon mb-3">Playlists</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">Kuratierte Sammlungen für tiefgründiges Wissen.</p>
       </div>
-
-      <div class="glass rounded-2xl p-8 md:p-10 leading-relaxed text-gray-200 space-y-8">
-        
-        <div class="prose prose-invert max-w-none">
-          <p class="text-lg md:text-xl">
-            <strong>Deus ex Lumen</strong> ist kein gewöhnliches Projekt. Es ist eine Einladung — ein Ruf —, das Denken neu zu entdecken.
+      
+      <div class="space-y-8" id="playlistGrids"></div>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about" class="py-24 md:py-32">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="reveal text-center mb-12">
+        <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon mb-3">Über Deus Ex Lumen</h2>
+        <p class="text-gray-400 text-lg italic">„Erkenntnis. Transformation. Mysterium."</p>
+      </div>
+      
+      <div class="reveal glass rounded-3xl p-8 md:p-12 space-y-10">
+        <!-- Intro -->
+        <div class="prose prose-invert max-w-none space-y-6">
+          <p class="text-lg md:text-xl leading-relaxed">
+            <strong class="text-red-400">Deus ex Lumen</strong> ist kein gewöhnliches Projekt. Es ist eine Einladung — ein Ruf —, das Denken neu zu entdecken.
           </p>
-          
-          <p class="text-lg md:text-xl">
-            Hier gilt: <em>Es gibt keine guten oder schlechten Informationen.</em> Jede Information ist ein Werkzeug. Was wir daraus machen, bestimmt unsere Entwicklung — nicht ihre Herkunft.
+          <p class="text-lg md:text-xl leading-relaxed">
+            Hier gilt: <em class="text-amber-400">Es gibt keine guten oder schlechten Informationen.</em> Jede Information ist ein Werkzeug. Was wir daraus machen, bestimmt unsere Entwicklung — nicht ihre Herkunft.
           </p>
         </div>
-
-        <div class="border-t border-white/10 pt-8">
-          <h3 class="font-semibold text-red-400 text-xl mb-6 flex items-center gap-2">
-            <i data-lucide="book-open" class="w-5 h-5"></i> Leitprinzipien
+        
+        <!-- Principles -->
+        <div class="border-t border-white/10 pt-10">
+          <h3 class="font-semibold text-red-400 text-xl mb-8 flex items-center gap-3">
+            <span class="w-10 h-10 rounded-lg bg-red-700/30 flex items-center justify-center">
+              <i data-lucide="book-open" class="w-5 h-5"></i>
+            </span>
+            Leitprinzipien
           </h3>
-          <ul class="space-y-4 text-lg">
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-red-500 font-bold">•</span>
-              Der Mensch ist weder gut noch schlecht — er ist <strong>formbar durch Information</strong>.
+          
+          <ul class="grid md:grid-cols-2 gap-6">
+            <li class="principle-item text-gray-300 leading-relaxed">
+              Der Mensch ist weder gut noch schlecht — er ist <strong class="text-white">formbar durch Information</strong>.
             </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-red-500 font-bold">•</span>
-              Kritisches Denken ist keine Gabe — es ist eine <strong>Fähigkeit</strong>, die man lernen und üben muss.
+            <li class="principle-item text-gray-300 leading-relaxed">
+              Kritisches Denken ist keine Gabe — es ist eine <strong class="text-white">Fähigkeit</strong>, die man lernen muss.
             </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-red-500 font-bold">•</span>
-              Freiheit ist das Naturrecht jedes Menschen — sie macht uns zu <strong>Anarchisten und Königen zugleich</strong>.
+            <li class="principle-item text-gray-300 leading-relaxed">
+              Freiheit ist das Naturrecht jedes Menschen — sie macht uns zu <strong class="text-white">Anarchisten und Königen</strong> zugleich.
             </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-red-500 font-bold">•</span>
-              Das <strong>Trivium</strong> — Grammatik, Logik und Rhetorik — ist der Schlüssel, um Weisheit bewusst zu kultivieren.
+            <li class="principle-item text-gray-300 leading-relaxed">
+              Das <strong class="text-white">Trivium</strong> — Grammatik, Logik und Rhetorik — ist der Schlüssel zur Weisheit.
             </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-red-500 font-bold">•</span>
-              Paradoxien sind Wegweiser. Wer sie erkennt, wächst in seiner Weisheit — nicht in seiner Gewissheit.
+            <li class="principle-item text-gray-300 leading-relaxed">
+              Paradoxien sind Wegweiser. Wer sie erkennt, wächst in seiner <strong class="text-white">Weisheit</strong>.
             </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-red-500 font-bold">•</span>
-              Prinzipien geben Orientierung — solange sie <strong>beweglich bleiben</strong>. Erstarrte Prinzipien verwandeln sich in Dogmen.
+            <li class="principle-item text-gray-300 leading-relaxed">
+              Prinzipien geben Orientierung — solange sie <strong class="text-white">beweglich bleiben</strong>.
             </li>
           </ul>
         </div>
-
-        <div class="border-t border-white/10 pt-8">
-          <p class="text-lg md:text-xl">
-            <strong>Deus ex Lumen</strong> möchte nicht belehren — sondern zum Fragen ermutigen. 
-            Es geht darum, Information als <em>Rohstoff für authentisches Denken</em> zu begreifen — 
-            und die eigene Freiheit nicht als abstraktes Ideal, sondern als <em>gelebte Haltung</em> zu erkennen.
+        
+        <!-- Outro -->
+        <div class="border-t border-white/10 pt-10 space-y-6">
+          <p class="text-lg md:text-xl leading-relaxed text-gray-300">
+            <strong class="text-red-400">Deus ex Lumen</strong> möchte nicht belehren — sondern zum Fragen ermutigen. 
+            Information als <em class="text-amber-400">Rohstoff für authentisches Denken</em> begreifen — 
+            und Freiheit als <em class="text-amber-400">gelebte Haltung</em> erkennen.
           </p>
           
-          <p class="text-lg md:text-xl mt-4">
-            Dies ist ein Ort für <strong>Suchende</strong>, nicht für fertige Antworten. 
-            Ein Ort, an dem <strong>Fragen wichtiger sind als Schlagzeilen</strong>. 
-            Ein Prozess, der dazu einlädt, <strong>authentisch, frei und kritisch</strong> zu leben — 
-            und das eigene Licht in die Welt zu tragen.
+          <p class="text-lg md:text-xl leading-relaxed text-gray-300">
+            Ein Ort für <strong class="text-white">Suchende</strong>. 
+            Wo <strong class="text-white">Fragen wichtiger sind als Schlagzeilen</strong>. 
+            Ein Prozess, der einlädt, <strong class="text-white">authentisch, frei und kritisch</strong> zu leben.
           </p>
         </div>
-
-        <div class="mt-8 text-center">
-          <p class="text-sm text-gray-500 italic border-l-4 border-red-500 pl-4">
-            „In jedem Schatten ein Licht.“
-          </p>
-        </div>
+        
+        <!-- Quote -->
+        <blockquote class="relative pl-6 border-l-4 border-red-500/50 italic text-gray-400">
+          <span class="absolute -left-3 -top-2 text-4xl text-red-500/30">"</span>
+          In jedem Schatten ein Licht.
+        </blockquote>
       </div>
     </div>
   </section>
-  <section id="kontakt" class="py-24">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+  
+  <!-- Contact Section -->
+  <section id="kontakt" class="py-24 md:py-32 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-red-950/10 to-transparent pointer-events-none"></div>
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative">
+      <div class="reveal text-center mb-12">
+        <h2 class="font-cinzel text-3xl md:text-4xl font-bold text-red-400 neon mb-3">Kontakt</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">Fragen, Kooperationen oder einfach nur Gedanken teilen.</p>
+      </div>
+      
       <div class="grid lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 glass rounded-2xl p-8">
-          <h3 class="font-cinzel text-2xl text-red-400 neon mb-4">Lass uns sprechen</h3>
-          <p class="text-gray-300 mb-6">Fragen, Kooperationen, Ideen? Schreibe mir eine Nachricht.</p>
+        <!-- Contact Form -->
+        <div class="lg:col-span-2 reveal glass rounded-3xl p-8">
+          <h3 class="font-cinzel text-xl text-red-400 mb-6">Lass uns sprechen</h3>
           <form class="grid sm:grid-cols-2 gap-4" onsubmit="sendMail(event)">
-            <input id="name" type="text" placeholder="Name" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-600/60" required>
-            <input id="email" type="email" placeholder="E-Mail" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-600/60" required>
-            <textarea id="message" placeholder="Nachricht" rows="4" class="sm:col-span-2 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-600/60" required></textarea>
-            <div class="sm:col-span-2 flex items-center justify-between gap-3">
-              <button type="submit" class="px-6 py-3 rounded-xl bg-red-700 hover:bg-red-600 shadow-lg ring-1 ring-white/10 transition flex items-center gap-2 justify-center"><i data-lucide="send"></i> Senden</button>
-              <button type="button" onclick="copyMail()" class="px-4 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition flex items-center gap-2"><i data-lucide="clipboard"></i> Mail kopieren</button>
+            <div>
+              <label for="name" class="block text-sm text-gray-400 mb-2">Name</label>
+              <input 
+                id="name" 
+                type="text" 
+                placeholder="Dein Name" 
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-600/60 focus:border-transparent transition placeholder:text-gray-600" 
+                required
+              >
+            </div>
+            <div>
+              <label for="email" class="block text-sm text-gray-400 mb-2">E-Mail</label>
+              <input 
+                id="email" 
+                type="email" 
+                placeholder="deine@email.de" 
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-600/60 focus:border-transparent transition placeholder:text-gray-600" 
+                required
+              >
+            </div>
+            <div class="sm:col-span-2">
+              <label for="message" class="block text-sm text-gray-400 mb-2">Nachricht</label>
+              <textarea 
+                id="message" 
+                placeholder="Deine Nachricht..." 
+                rows="5" 
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-600/60 focus:border-transparent transition resize-none placeholder:text-gray-600" 
+                required
+              ></textarea>
+            </div>
+            <div class="sm:col-span-2 flex flex-wrap items-center gap-3">
+              <button type="submit" class="btn-glow px-6 py-3 rounded-xl bg-red-700 hover:bg-red-600 shadow-lg transition flex items-center gap-2 font-medium">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                Senden
+              </button>
+              <button type="button" onclick="copyMail()" class="px-6 py-3 rounded-xl border border-white/10 hover:bg-white/5 transition flex items-center gap-2">
+                <i data-lucide="clipboard" class="w-4 h-4"></i>
+                Mail kopieren
+              </button>
             </div>
           </form>
         </div>
-        <div class="glass rounded-2xl p-8">
-          <h4 class="font-semibold mb-4">Social & More</h4>
-          <ul class="space-y-3 text-gray-300">
-            <li class="flex items-center gap-2"><i data-lucide="youtube"></i> <a id="ytLink" href="https://www.youtube.com/@deusexlumen" class="hover:text-white/90" target="_blank" rel="noopener">YouTube</a></li>
-            <li class="flex items-center gap-2"><i data-lucide="instagram"></i> <a href="https://www.instagram.com/deus.ex.lumen/" class="hover:text-white/90" target="_blank" rel="noopener">Instagram</a></li>
-            <li class="flex items-center gap-2"><i data-lucide="link"></i> <a href="https://deusexlumen.bio.link" class="hover:text-white/90" target="_blank" rel="noopener">Bio Link</a></li>
-            <li class="flex items-center gap-2"><i data-lucide="mail"></i> <a id="mailLink" href="mailto:deusexlumen@airmail.cc" class="hover:text-white/90">deusexlumen@airmail.cc</a></li>
+        
+        <!-- Social Links -->
+        <div class="reveal glass rounded-3xl p-8" style="transition-delay: 0.2s">
+          <h4 class="font-semibold mb-6">Social & Links</h4>
+          <ul class="space-y-4">
+            <li>
+              <a href="https://www.youtube.com/@deusexlumen" target="_blank" rel="noopener" class="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition group">
+                <span class="w-10 h-10 rounded-lg bg-red-700/30 flex items-center justify-center group-hover:bg-red-700/50 transition">
+                  <i data-lucide="youtube" class="w-5 h-5"></i>
+                </span>
+                <span class="text-gray-300 group-hover:text-white transition">YouTube</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/deus.ex.lumen/" target="_blank" rel="noopener" class="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition group">
+                <span class="w-10 h-10 rounded-lg bg-pink-700/30 flex items-center justify-center group-hover:bg-pink-700/50 transition">
+                  <i data-lucide="instagram" class="w-5 h-5"></i>
+                </span>
+                <span class="text-gray-300 group-hover:text-white transition">Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://deusexlumen.bio.link" target="_blank" rel="noopener" class="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition group">
+                <span class="w-10 h-10 rounded-lg bg-amber-700/30 flex items-center justify-center group-hover:bg-amber-700/50 transition">
+                  <i data-lucide="link" class="w-5 h-5"></i>
+                </span>
+                <span class="text-gray-300 group-hover:text-white transition">Bio Link</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:deusexlumen@airmail.cc" class="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition group">
+                <span class="w-10 h-10 rounded-lg bg-blue-700/30 flex items-center justify-center group-hover:bg-blue-700/50 transition">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </span>
+                <span class="text-gray-300 group-hover:text-white transition text-sm">deusexlumen@airmail.cc</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
   </section>
-  <button id="topBtn" class="hidden fixed bottom-6 right-6 bg-red-700 p-3 rounded-full shadow-lg hover:bg-red-600 transition" aria-label="Zurück nach oben">
-    <i data-lucide="chevron-up"></i>
+  
+  <!-- Back to Top -->
+  <button id="topBtn" class="fixed bottom-6 right-6 w-12 h-12 bg-red-700 hover:bg-red-600 rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 translate-y-4 pointer-events-none z-50" aria-label="Zurück nach oben">
+    <i data-lucide="chevron-up" class="w-5 h-5"></i>
   </button>
-  <footer class="py-10 text-center bg-black/40 border-t border-white/10">
-    <p class="text-gray-400">© <span id="year"></span> Deus Ex Lumen – „In jedem Schatten ein Licht.“</p>
+  
+  <!-- Footer -->
+  <footer class="py-8 text-center border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4">
+      <p class="text-gray-500 text-sm">
+        © <span id="year"></span> Deus Ex Lumen — „In jedem Schatten ein Licht."
+      </p>
+    </div>
   </footer>
+
   <script>
+    // Configuration
     const CONFIG = {
       apiKey: "AIzaSyBEnFQNre_5MWDxMCvnzOmciYd2LkDJuFw",
-      brand: { channelQuery: "Deus Ex Lumen", youtubeUrl: "https://www.youtube.com/@deusexlumen" },
+      brand: { 
+        channelQuery: "Deus Ex Lumen", 
+        youtubeUrl: "https://www.youtube.com/@deusexlumen" 
+      },
       playlists: [
         { id: "PLg0E3JcRs5WYjDCDhwAbPHMvJ4EAp9HzF", title: "MAAT", description: "Die MAAT (Das System)" },
         { id: "PLg0E3JcRs5WbK4PlfETFaf0weiJRytupw", title: "Passio", description: "Die wichtigsten Vorträge von Mark Passio" },
-        { id: "PLg0E3JcRs5Wb1cfHJvfV7H5uFOWJm7RhY", title: "Demokratie", description: 'Das Problem mit "unserer" Demokratie' }
+        { id: "PLg0E3JcRs5Wb1cfHJvfV7H5uFOWJm7RhY", title: "Demokratie", description: "Das Problem mit 'unserer' Demokratie" }
       ],
-      uploadsMax: 9, 
-      playlistItemsMax: 8
+      uploadsMax: 9,
+      playlistItemsMax: 6
     };
-    const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
-    lucide.createIcons(); $('#year').textContent = new Date().getFullYear();
-    const topBtn=$('#topBtn'); window.addEventListener('scroll',()=>{if(window.scrollY>400)topBtn.classList.remove('hidden');else topBtn.classList.add('hidden')}); topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-    let fxEnabled=true; const fxToggle=$('#fxToggle'); function initParticles(){if(!$('#particles-js'))return; particlesJS('particles-js',{particles:{number:{value:90,density:{enable:true,value_area:900}},color:{value:'#ef4444'},shape:{type:'circle'},opacity:{value:0.3},size:{value:2,random:true},line_linked:{enable:true,distance:140,color:'#7f1d1d',opacity:0.4,width:1},move:{enable:true,speed:1}},interactivity:{detect_on:'canvas',events:{onhover:{enable:true,mode:'repulse'},onclick:{enable:true,mode:'push'},resize:true},modes:{repulse:{distance:100,duration:0.4}}},retina_detect:true});} initParticles();
-    fxToggle.addEventListener('click',()=>{fxEnabled=!fxEnabled; fxToggle.setAttribute('aria-pressed',String(fxEnabled)); fxToggle.textContent=`FX: ${fxEnabled?'AN':'AUS'}`; const c=$('#particles-js'); if(fxEnabled){c.style.display=''; initParticles();} else {c.style.display='none'; c.querySelectorAll('canvas').forEach(n=>n.remove());}});
-    const glow=$('#cursorGlow'); window.addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px'; glow.style.top=e.clientY+'px';});
-    const typeEl=$('#typewriter'); const phrases=['„Wo Dunkelheit sich ins Licht verwandelt.“','Symbolik entschlüsseln. Perspektiven erweitern.','Cineastisch · Tiefgründig · Kompromisslos']; let pi=0,ci=0,deleting=false; function typeLoop(){const full=phrases[pi]; if(!deleting){ci++; typeEl.textContent=full.slice(0,ci); if(ci===full.length){deleting=true; setTimeout(typeLoop,1800); return}} else {ci--; typeEl.textContent=full.slice(0,ci); if(ci===0){deleting=false; pi=(pi+1)%phrases.length}} setTimeout(typeLoop,deleting?30:50)} setTimeout(typeLoop,1500);
-    const reveal=(el)=>{el.style.opacity=0; el.style.transform='translateY(16px)'; const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){el.style.transition='opacity .7s ease, transform .7s ease'; el.style.opacity=1; el.style.transform='translateY(0)'; io.unobserve(el);}})},{threshold:0.15}); io.observe(el)}; $$('section,.glass').forEach(reveal);
-    const YT_API='https://www.googleapis.com/youtube/v3';
-    async function fetchJson(url){const res=await fetch(url); if(!res.ok) throw new Error('HTTP '+res.status); return await res.json()}
-    async function resolveChannelId(q){const url=`${YT_API}/search?part=snippet&type=channel&q=${encodeURIComponent(q)}&key=${CONFIG.apiKey}`; const data=await fetchJson(url); const item=data.items?.[0]; return item?.snippet?.channelId||item?.id?.channelId||null}
-    async function getUploadsPlaylistId(cid){const url=`${YT_API}/channels?part=contentDetails&id=${cid}&key=${CONFIG.apiKey}`; const data=await fetchJson(url); return data.items?.[0]?.contentDetails?.relatedPlaylists?.uploads||null}
-    async function getPlaylistItems(pid,max){const url=`${YT_API}/playlistItems?part=snippet&maxResults=${max}&playlistId=${pid}&key=${CONFIG.apiKey}`; const data=await fetchJson(url); return data.items||[]}
-    function videoCard(item){const s=item.snippet; const vid=s.resourceId?.videoId; const thumb=s.thumbnails?.maxres?.url||s.thumbnails?.high?.url||s.thumbnails?.medium?.url||s.thumbnails?.default?.url; const title=s.title; const date=new Date(s.publishedAt).toLocaleDateString('de-DE',{year:'numeric',month:'short',day:'2-digit'}); const a=document.createElement('a'); a.href=`https://www.youtube.com/watch?v=${vid}`; a.target='_blank'; a.rel='noopener'; a.className='card group block glass rounded-2xl overflow-hidden ring-1 ring-white/10'; a.innerHTML=`<div class="aspect-video overflow-hidden"><img src="${thumb}" alt="${title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"/></div><div class="p-4"><h3 class="font-semibold leading-snug line-clamp-2">${title}</h3><p class="text-sm text-gray-400 mt-1 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4"></i> ${date}</p></div>`; return a}
-    function playlistSection({id,title,description},items){const wrap=document.createElement('div'); wrap.className='glass rounded-2xl p-4 md:p-6'; wrap.innerHTML=`<div class="flex items-center justify-between gap-4 mb-4"><div><h3 class="font-semibold text-lg">${title}</h3>${description?`<p class="text-sm text-gray-400">${description}</p>`:''}</div><a href="https://www.youtube.com/playlist?list=${id}" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-red-700 hover:bg-red-600 shadow ring-1 ring-white/10 text-sm flex items-center gap-2"><i data-lucide="youtube"></i> Auf YouTube</a></div><div class="grid sm:grid-cols-2 gap-4" id="grid-${id}"></div>`; const grid=wrap.querySelector(`#grid-${CSS.escape(id)}`); items.forEach(item=>grid.appendChild(videoCard(item))); return wrap}
-    async function buildUploads(){const grid=$('#uploadsGrid'); const fallback=$('#fallbackPlayer'); try{const cid=await resolveChannelId(CONFIG.brand.channelQuery); if(!cid) throw new Error('Kein Channel gefunden'); const up=await getUploadsPlaylistId(cid); if(!up) throw new Error('Kein Uploads-Feed'); const items=await getPlaylistItems(up,CONFIG.uploadsMax); if(!items.length) throw new Error('Keine Items'); items.forEach(i=>grid.appendChild(videoCard(i)));}catch(e){console.warn('Uploads Fallback aktiviert:',e); fallback.hidden=false}}
-    async function buildPlaylists(){const root=$('#playlistGrids'); for(const pl of CONFIG.playlists){try{const items=await getPlaylistItems(pl.id,CONFIG.playlistItemsMax); if(!items.length) continue; root.appendChild(playlistSection(pl,items));}catch(e){console.warn('Playlist Fehler',pl.id,e)}} if(!CONFIG.playlists.length){root.innerHTML='<div class="text-center text-gray-400 col-span-2">Playlists werden automatisch angezeigt, sobald IDs im CONFIG eingetragen sind. Aktuell siehst du die neuesten Uploads oben.</div>'}}
-    (async()=>{const yt=$('#ytLink'); if(yt) yt.href=CONFIG.brand.youtubeUrl; await buildUploads(); await buildPlaylists(); lucide.createIcons();})();
-    function sendMail(e){e.preventDefault(); const name=$('#name').value.trim(); const email=$('#email').value.trim(); const message=$('#message').value.trim(); const subject=encodeURIComponent(`Kontakt: ${name}`); const body=encodeURIComponent(`${message}\n\n— ${name}\n${email}`); window.location.href=`mailto:deusexlumen@airmail.cc?subject=${subject}&body=${body}`}
-    function copyMail(){const mail=$('#mailLink').getAttribute('href').replace('mailto:',''); navigator.clipboard.writeText(mail).then(()=>{alert('E-Mail-Adresse kopiert: '+mail)})}
+
+    // Helpers
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Set year
+    $('#year').textContent = new Date().getFullYear();
+
+    // Cursor glow
+    const glow = $('#cursorGlow');
+    let glowEnabled = true;
+    let mouseX = 0, mouseY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+    
+    function updateGlow() {
+      if (glowEnabled) {
+        glow.style.left = mouseX + 'px';
+        glow.style.top = mouseY + 'px';
+      }
+      requestAnimationFrame(updateGlow);
+    }
+    updateGlow();
+
+    // FX Toggle
+    const fxToggle = $('#fxToggle');
+    let fxEnabled = true;
+    
+    fxToggle.addEventListener('click', () => {
+      fxEnabled = !fxEnabled;
+      glowEnabled = fxEnabled;
+      fxToggle.setAttribute('aria-pressed', String(fxEnabled));
+      fxToggle.classList.toggle('text-red-400', fxEnabled);
+      
+      // Toggle orbs
+      $$('.orb').forEach(orb => {
+        orb.style.display = fxEnabled ? '' : 'none';
+      });
+      
+      // Toggle cursor glow
+      glow.style.opacity = fxEnabled ? '1' : '0';
+    });
+
+    // Mobile menu
+    const mobileMenu = $('#mobileMenu');
+    const mobileMenuPanel = $('#mobileMenuPanel');
+    const openMenuBtn = $('#openMenu');
+    const closeMenuBtn = $('#closeMenu');
+
+    function openMenu() {
+      mobileMenu.classList.remove('pointer-events-none', 'opacity-0');
+      mobileMenuPanel.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.add('opacity-0');
+      mobileMenuPanel.classList.add('translate-x-full');
+      setTimeout(() => {
+        mobileMenu.classList.add('pointer-events-none');
+      }, 300);
+      document.body.style.overflow = '';
+    }
+
+    openMenuBtn.addEventListener('click', openMenu);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu || e.target.closest('a')) closeMenu();
+    });
+
+    // Back to top button
+    const topBtn = $('#topBtn');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        topBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      } else {
+        topBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      }
+    });
+    
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    $$('.reveal, .stagger').forEach(el => revealObserver.observe(el));
+
+    // Typewriter effect
+    const typeEl = $('#typewriter');
+    const phrases = [
+      'Wo Dunkelheit sich ins Licht verwandelt.',
+      'Symbolik entschlüsseln. Perspektiven erweitern.',
+      'Cineastisch · Tiefgründig · Kompromisslos',
+      'Erkenntnis. Transformation. Mysterium.'
+    ];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 50;
+
+    function typeWriter() {
+      const currentPhrase = phrases[phraseIndex];
+      
+      if (isDeleting) {
+        typeEl.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 30;
+      } else {
+        typeEl.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 50;
+      }
+
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typeSpeed = 500;
+      }
+
+      setTimeout(typeWriter, typeSpeed);
+    }
+    
+    setTimeout(typeWriter, 1000);
+
+    // YouTube API
+    const YT_API = 'https://www.googleapis.com/youtube/v3';
+
+    async function fetchJson(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    }
+
+    async function resolveChannelId(query) {
+      const url = `${YT_API}/search?part=snippet&type=channel&q=${encodeURIComponent(query)}&key=${CONFIG.apiKey}`;
+      const data = await fetchJson(url);
+      const item = data.items?.[0];
+      return item?.snippet?.channelId || item?.id?.channelId || null;
+    }
+
+    async function getUploadsPlaylistId(channelId) {
+      const url = `${YT_API}/channels?part=contentDetails&id=${channelId}&key=${CONFIG.apiKey}`;
+      const data = await fetchJson(url);
+      return data.items?.[0]?.contentDetails?.relatedPlaylists?.uploads || null;
+    }
+
+    async function getPlaylistItems(playlistId, max) {
+      const url = `${YT_API}/playlistItems?part=snippet&maxResults=${max}&playlistId=${playlistId}&key=${CONFIG.apiKey}`;
+      const data = await fetchJson(url);
+      return data.items || [];
+    }
+
+    function createVideoCard(item) {
+      const snippet = item.snippet;
+      const videoId = snippet.resourceId?.videoId;
+      const thumbnail = snippet.thumbnails?.maxres?.url || 
+                       snippet.thumbnails?.high?.url || 
+                       snippet.thumbnails?.medium?.url || 
+                       snippet.thumbnails?.default?.url;
+      const title = snippet.title;
+      const date = new Date(snippet.publishedAt).toLocaleDateString('de-DE', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit'
+      });
+
+      const card = document.createElement('a');
+      card.href = `https://www.youtube.com/watch?v=${videoId}`;
+      card.target = '_blank';
+      card.rel = 'noopener';
+      card.className = 'card group block glass rounded-2xl overflow-hidden';
+      card.innerHTML = `
+        <div class="aspect-video overflow-hidden relative">
+          <img src="${thumbnail}" alt="${title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition flex items-center justify-center">
+            <span class="w-14 h-14 rounded-full bg-red-600/90 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all shadow-xl">
+              <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-medium leading-snug line-clamp-2 group-hover:text-red-400 transition">${title}</h3>
+          <p class="text-sm text-gray-500 mt-2 flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            ${date}
+          </p>
+        </div>
+      `;
+      return card;
+    }
+
+    function createPlaylistSection(playlist, items) {
+      const section = document.createElement('div');
+      section.className = 'reveal glass rounded-2xl p-6';
+      section.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div>
+            <h3 class="font-cinzel text-xl font-semibold text-white">${playlist.title}</h3>
+            ${playlist.description ? `<p class="text-sm text-gray-400 mt-1">${playlist.description}</p>` : ''}
+          </div>
+          <a href="https://www.youtube.com/playlist?list=${playlist.id}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-700/50 hover:bg-red-700 transition text-sm whitespace-nowrap">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Playlist öffnen
+          </a>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="grid-${playlist.id}"></div>
+      `;
+      
+      const grid = section.querySelector(`#grid-${CSS.escape(playlist.id)}`);
+      items.forEach(item => grid.appendChild(createVideoCard(item)));
+      
+      return section;
+    }
+
+    async function loadUploads() {
+      const grid = $('#uploadsGrid');
+      const fallback = $('#fallbackPlayer');
+      
+      try {
+        const channelId = await resolveChannelId(CONFIG.brand.channelQuery);
+        if (!channelId) throw new Error('Channel not found');
+        
+        const uploadsId = await getUploadsPlaylistId(channelId);
+        if (!uploadsId) throw new Error('Uploads playlist not found');
+        
+        const items = await getPlaylistItems(uploadsId, CONFIG.uploadsMax);
+        if (!items.length) throw new Error('No items found');
+        
+        // Clear skeleton loaders
+        grid.innerHTML = '';
+        grid.classList.add('stagger');
+        
+        // Add video cards
+        items.forEach(item => grid.appendChild(createVideoCard(item)));
+        
+        // Update stats
+        $('#statVideos').textContent = items.length + '+';
+        
+        // Observe for animation
+        revealObserver.observe(grid);
+        setTimeout(() => grid.classList.add('visible'), 100);
+        
+      } catch (error) {
+        console.warn('Uploads fallback activated:', error);
+        grid.innerHTML = '';
+        fallback.classList.remove('hidden');
+      }
+    }
+
+    async function loadPlaylists() {
+      const container = $('#playlistGrids');
+      
+      for (const playlist of CONFIG.playlists) {
+        try {
+          const items = await getPlaylistItems(playlist.id, CONFIG.playlistItemsMax);
+          if (!items.length) continue;
+          
+          const section = createPlaylistSection(playlist, items);
+          container.appendChild(section);
+          revealObserver.observe(section);
+          
+        } catch (error) {
+          console.warn('Playlist error:', playlist.id, error);
+        }
+      }
+    }
+
+    // Initialize
+    (async () => {
+      await loadUploads();
+      await loadPlaylists();
+      lucide.createIcons();
+    })();
+
+    // Contact form
+    function sendMail(e) {
+      e.preventDefault();
+      const name = $('#name').value.trim();
+      const email = $('#email').value.trim();
+      const message = $('#message').value.trim();
+      const subject = encodeURIComponent(`Kontakt: ${name}`);
+      const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
+      window.location.href = `mailto:deusexlumen@airmail.cc?subject=${subject}&body=${body}`;
+    }
+
+    function copyMail() {
+      const mail = 'deusexlumen@airmail.cc';
+      navigator.clipboard.writeText(mail).then(() => {
+        const btn = event.target.closest('button');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Kopiert!';
+        btn.classList.add('text-green-400');
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.classList.remove('text-green-400');
+        }, 2000);
+      });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
   </script>
-  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(console.warn);});}</script>
 </body>
 </html>
